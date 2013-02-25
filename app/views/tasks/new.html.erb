@@ -1,4 +1,5 @@
-<form>
-  <input type="text" name="task_name" placeholder="Enter name of task" />
-  <input type="submit" value="Add" />
-</form>
+<%= form_for @task do |task| %>
+  <%= task.text_field :body, :placeholder => "body" %>
+  <%= task.text_field :priority, :placeholder => "priority" %>
+  <%= task.submit %>
+<% end %>
