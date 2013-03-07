@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   protect_from_forgery
 
   def index
-    @tasks = Task.all
+    @tasks = current_user.tasks
   end
 
   def new
@@ -15,5 +15,9 @@ class TasksController < ApplicationController
     task.save
 
     redirect_to tasks_path
+  end
+
+  def current_user
+    @user = User.find(params[:user_id])
   end
 end
