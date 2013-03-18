@@ -2,7 +2,11 @@ class TasksController < ApplicationController
   protect_from_forgery
 
   def index
-    @tasks = current_user.tasks
+    if params[:user_id].present?
+      @tasks = current_user.tasks
+    else
+      @tasks = Task.all
+    end
   end
 
   def new
@@ -18,6 +22,6 @@ class TasksController < ApplicationController
   end
 
   def current_user
-    @user = User.find(params[:user_id])
+    @user = User.find_by_id(params[:user_id])
   end
 end
