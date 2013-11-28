@@ -50,6 +50,7 @@ Seth::Application.routes.draw do
   # just remember to delete public/index.html.
   resources :tasks
   root :to => 'pages#index'
+  resources :users
 
   # See how all your routes lay out with "rake routes"
 
