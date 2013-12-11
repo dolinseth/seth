@@ -1,6 +1,8 @@
 class TasksController < ApplicationController
   protect_from_forgery
 
+  before_filter :require_authentication, :only => [:index, :new, :create]
+
   def index
     @tasks = current_user.tasks
   end
@@ -15,9 +17,5 @@ class TasksController < ApplicationController
     task.save
 
     redirect_to tasks_path
-  end
-
-  def current_user
-    @user = User.find(params[:user_id])
   end
 end

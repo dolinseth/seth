@@ -51,6 +51,8 @@ Seth::Application.routes.draw do
   resources :tasks
   root :to => 'pages#index'
   resources :users
+  match "/login", :controller => "users", :action => "login", :via => [:get]
+  match "/authenticate", :controller => "users", :action => "authenticate", :via => [:post]
 
   # See how all your routes lay out with "rake routes"
 

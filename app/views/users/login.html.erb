@@ -1,6 +1,5 @@
-<%= form_for @user do |user| %>
+<%= form_for @user, :url => authenticate_path do |user| %>
   <%= user.text_field :email, :placeholder => "email" %>
   <%= user.password_field :password, :placeholder => "password" %>
-  <%= user.text_field :name, :placeholder => "name" %>
-  <%= user.submit %>
+  <%= user.submit "Log In" %>
 <% end %>
