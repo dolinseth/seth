@@ -11,8 +11,12 @@
 	<h1> hello <%= current_user.email %> </h1>
 <% else %>
 	<h1>Hello User</h1>
-	<%= link_to "Log In", login_path %>
-	<%= link_to "Create Account", new_user_path %>
+	<p>
+		<%= link_to "Log In", login_path %>
+	</p>
+	<p>
+		<%= link_to "Create Account", new_user_path %>
+	</p>
 <% end %>
 
 <%= yield %>

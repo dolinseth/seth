@@ -1,11 +1,17 @@
 class TasksController < ApplicationController
   protect_from_forgery
 
-  before_filter :require_authentication, :only => [:index, :new, :create]
-  before_filter :current_user, :only => [:create]
+  before_filter :require_authentication, :only => [:index, :new, :create, :clear]
+  before_filter :index, :only => [:clear]
 
   def index
     @tasks = current_user.tasks
+  end
+
+  def clear
+    @tasks.each do |task|
+      User.find(@current_user).tasks.first.destroy
+    end
   end
 
   def new

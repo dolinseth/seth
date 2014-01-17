@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       cookies["user_id"] = @user.id
       redirect_to tasks_url({:user_id=>@user.id})
     else
-      raise "You shall not pass"
+      redirect_to login_path
     end
   end
 end

@@ -53,6 +53,7 @@ Seth::Application.routes.draw do
   resources :users
   match "/login", :controller => "users", :action => "login", :via => [:get]
   match "/authenticate", :controller => "users", :action => "authenticate", :via => [:post]
+  match "/clear", :controller => "tasks", :action => "clear", :via => [:get]
 
   # See how all your routes lay out with "rake routes"
 
