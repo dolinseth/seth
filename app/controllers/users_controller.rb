@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     @user = User.find_by_email(params["user"]["email"])
     if @user.password == params["user"]["password"]
       cookies["user_id"] = @user.id
-      redirect_to tasks_url({:user_id=>@user.id})
+      redirect_to tasks_url
     else
       redirect_to login_path
     end
