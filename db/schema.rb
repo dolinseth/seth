@@ -11,14 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131211001118) do
+ActiveRecord::Schema.define(:version => 20140121220015) do
 
   create_table "tasks", :force => true do |t|
     t.string   "body"
     t.integer  "priority"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
     t.integer  "user_id"
+    t.string   "state",      :default => "unfinished"
   end
 
   create_table "users", :force => true do |t|
@@ -26,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20131211001118) do
     t.string   "password"
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
-    t.string   "name",       :default => "Anonymous", :null => false
+    t.string   "name",       :default => "", :null => false
   end
 
 end

@@ -13,3 +13,22 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+
+
+$( document ).ready(function() {
+$('li').click(function() {
+	$.ajax({
+	  type: "POST",
+	  url: "http://localhost:3000/tasks/"+$(this).data("id"),
+	  data: {"_method":"delete"},
+	  dataType:"json",
+	  success: function(data) {
+	  console.log(data)
+	  $(this).fadeOut("slow")
+	  },
+	  error: function(data) {
+	  console.log(data)
+	  }
+	});
+})});

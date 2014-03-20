@@ -2,8 +2,13 @@
 
 <ol>
 <% @tasks.each do |task| %>
-  <li><%= "#{task.body}, #{task.priority}" %></li>
+	<% if task.finished? %>
+		<li data-id="<%= task.id %>"><strike><%= "#{task.body}, #{task.priority}" %></strike> <%= link_to  "delete task", task_url(task.id), {:method => "delete"}%> <%= link_to "Mark task as finished", task_url(task.id), {:method => "put"} %></li>
+	<% else %>
+	  <li data-id="<%= task.id %>"><%= "#{task.body}, #{task.priority}" %> <%= link_to  "delete task", task_url(task.id), {:method => "delete"}%> <%= link_to "Mark task as finished", task_url(task.id), {:method => "put"} %></li>
+	<% end %>
 <% end %>
 </ol>
 
 <%= link_to "New task", new_task_url %>
+<%= button_to "Clear tasks", {:action => "clear"} %>
