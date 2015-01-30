@@ -4,6 +4,7 @@ class TasksController < ApplicationController
   before_filter :authenticate_user!, :only => [:index, :new, :create, :clear]
 
   def index
+<<<<<<< HEAD
     @tasks = current_user.tasks.sort { |a,b| b.priority <=> a.priority }
     respond_to do |format|
       format.html
@@ -26,6 +27,13 @@ class TasksController < ApplicationController
   def update
     Task.find(params[:id]).update_attributes(:state => "finished")
     redirect_to tasks_url
+=======
+    if params[:user_id].present?
+      @tasks = current_user.tasks
+    else
+      @tasks = Task.all
+    end
+>>>>>>> 0134818016e92dc26afa04035c1a2ff6bd36cd2e
   end
 
   def new
@@ -49,6 +57,7 @@ class TasksController < ApplicationController
   end
 end
 
+<<<<<<< HEAD
 
 # $.ajax({
 #   type: "POST",
@@ -58,3 +67,9 @@ end
 #   dataType: "json",
 #   crossDomain: true
 # });
+=======
+  def current_user
+    @user = User.find_by_id(params[:user_id])
+  end
+end
+>>>>>>> 0134818016e92dc26afa04035c1a2ff6bd36cd2e
