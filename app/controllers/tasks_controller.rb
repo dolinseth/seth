@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   protect_from_forgery
 
-  before_filter :require_authentication, :only => [:index, :new, :create, :clear]
+  before_filter :authenticate_user!, :only => [:index, :new, :create, :clear]
 
   def index
     @tasks = current_user.tasks.sort { |a,b| b.priority <=> a.priority }
